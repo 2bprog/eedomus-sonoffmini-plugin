@@ -13,10 +13,10 @@ Version Original de Tibalt76, Modifiée par Benjamin B. (Benj70b)
 
 * **IP** : IP adresse du SonOff Mini
 * **Device ID** : Identifiant du SonOff Mini
-* **Création Auto-Off : Configuration de l'arret automatique
-* **Création Démarrage du Relais : Configuration de l'état au démarrage du relais
-* **Signal Wifi : Information sur l'état du signal Wifi
-* **Fréquence d'actualisation (min) : Fréquence de structation des informations
+* **Création Auto-Off** : Configuration de l'arret automatique
+* **Création Démarrage du Relais** : Configuration de l'état au démarrage du relais
+* **Signal Wifi** : Information sur l'état du signal Wifi
+* **Fréquence d'actualisation (min)** : Fréquence de structation des informations
 
 ## Périphériques crées en fonction de votre sélection : 
 
