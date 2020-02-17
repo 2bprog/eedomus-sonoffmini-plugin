@@ -1,0 +1,266 @@
+{
+	"plugin_id": "sonoffmini",
+	"name_fr": "SonOff Mini",
+	"icon": "SonoffMini2.png",
+	"version": "3.0",
+	"creation_date": "2020-02-17",
+	"modification_date": "2020-01-21",
+	"author": "Tibalt76, Benj70b (contributeur)",
+	"description_fr": "<b>Intégration sur eedomus des modules Sonoff Mini en mode DIY</b><br><br>Avec retour d'état, auto-off, configuration du relais au démarrage, état du signal wifi",
+	"description_en": "",
+	"description_es": "",
+	"description_it": "",
+	"description_de": "",
+	"forum_link": "",
+	"parameters": [	
+		{
+			"parameter": "CFG",
+			"description": "<b>Information SonOff Mini :</b>",
+            "xtype": "displayfield",
+			"field": "style: 'padding: 3px; ', value: ''"			
+		},				
+		{
+			"parameter": "IP",
+			"description_fr": "IP",
+			"xtype": "textfield",
+			"default_value": "",
+			"field": "style: 'padding: 3px;', width:130, allowBlank:false, maskRe:/[0-9.]/, regex:/^(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])$/,  regexText:'Non valid IP address [0-255].[0-255].[0-255].[0-255]'"
+		},
+		{
+			"parameter": "DEVID",
+			"description_fr": "Device ID",
+			"xtype": "textfield",
+			"default_value": "",
+			"field": "style: 'padding: 3px;', width:130, allowBlank:false"
+		},
+		{		
+			"parameter": "AUTOOFF",
+			"description": "Création Auto-Off",
+			"xtype": "checkbox",
+			"field": "style: 'padding: 3px;', checked: true"
+		},
+		{		
+			"parameter": "START",
+			"description": "Création Démarrage du Relais ",
+			"xtype": "checkbox",
+			"field": "style: 'padding: 3px;', checked: true"
+		},
+		{		
+			"parameter": "WIFI",
+			"description": "Création Signal Wifi",
+			"xtype": "checkbox",
+			"field": "style: 'margin-bottom: 10px;', checked: true"
+		},
+		{
+			"parameter": "OPTIONS",
+			"description": "<b>Options :</b>",			
+            "xtype": "displayfield",
+            "field": "style: 'padding-top: 3px;', value: ' '"			
+		},
+		{
+			"parameter": "FREQ",
+			"description": "Fréquence d'actualisation (min)",
+			"xtype": "numberfield",
+			"default_value": "5",
+			"field": "style: 'margin-bottom: 10px;', minValue:0, maxValue:1000 ,allowDecimals:false, width:60, allowBlank:false"
+		}
+	],	
+	"scripts": [
+		{
+			"name": "2B_sonoffmini.php"
+		}
+	],
+	"devices":
+	[
+		{   "device_id": "som",		
+			"module_id": "41",
+			"type": "http",
+			"name_fr": "plugin.name",
+			"icon": "SonoffMini2.png",
+			"default_image" : "SonoffMini2.png",
+			"utilisation_id": "2",
+			"parameters": {
+				"VAR1": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR2": "",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info",
+				"RAW_XPATH": "floor(translate(//switch,'ofn','001')) * 100",
+				"POLLING": "plugin.parameters.FREQ",
+				"CONVERT": "0"
+			},
+			"values": [
+				{
+					"value": "0",
+					"description": "Off",
+					"icon": "SonOffMini_Off.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/switch",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {     \"switch\": \"off\" }  }",
+					"http_type": "POST",
+					"hidden": "0"
+				},
+				{
+					"value": "100",
+					"description": "On",
+					"icon": "SonOffMini_On.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/switch",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {     \"switch\": \"off\" }  }",
+					"http_type": "POST",
+					"hidden": "0"
+				}
+			]
+		},	
+		{   "device_id": "autosom",	"parent_id": "som",		"create": "plugin.parameters.AUTOOFF",	
+			"module_id": "41",
+			"type": "http",
+			"name_fr": "plugin.name - Auto-Off",
+			"icon": "SonOffMini_autooff.png",
+			"default_image" : "SonOffMini_autooff.png",
+			"utilisation_id": "43",
+			"parameters": {
+				"VAR1": "plugin.parameters.IP",
+				"VAR2": "plugin.parameters.DEVID",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info",
+				"RAW_XPATH": "floor(translate(//pulse,'ofn','001')) * //pulseWidth",
+				"POLLING": "plugin.parameters.FREQ",
+				"CONVERT": "0"
+			},
+			"values": [
+				{
+					"value": "0",
+					"description": "Désactivé",
+					"icon": "SonOffMini_autodes.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/pulse",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {  \"pulse\": \"off\"}  }",
+					"http_type": "POST",
+					"hidden": "0"
+				},
+				{
+					"value": "1000",
+					"description": "1s",
+					"icon": "SonOffMini_autooff.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/pulse",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {  \"pulse\": \"on\",  \"pulseWidth\": [RAW_VALUE]}  }",
+					"http_type": "POST",
+					"hidden": "0"
+				},
+				{
+					"value": "5000",
+					"description": "5s",
+					"icon": "SonOffMini_autooff.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/pulse",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {  \"pulse\": \"on\",  \"pulseWidth\": [RAW_VALUE]}  }",
+					"http_type": "POST",
+					"hidden": "0"
+				},
+				{
+					"value": "10000",
+					"description": "10s",
+					"icon": "SonOffMini_autooff.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/pulse",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {  \"pulse\": \"on\",  \"pulseWidth\": [RAW_VALUE]}  }",
+					"http_type": "POST",
+					"hidden": "0"
+				},
+				{
+					"value": "30000",
+					"description": "30s",
+					"icon": "SonOffMini_autooff.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/pulse",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {  \"pulse\": \"on\",  \"pulseWidth\": [RAW_VALUE]}  }",
+					"http_type": "POST",
+					"hidden": "0"
+				},
+				{
+					"value": "60000",
+					"description": "60s",
+					"icon": "SonOffMini_autooff.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/pulse",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {  \"pulse\": \"on\",  \"pulseWidth\": [RAW_VALUE]}  }",
+					"http_type": "POST",
+					"hidden": "0"
+				},
+				{
+					"value": "300000",
+					"description": "300s",
+					"icon": "SonOffMini_autooff.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/pulse",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {  \"pulse\": \"on\",  \"pulseWidth\": [RAW_VALUE]}  }",
+					"http_type": "POST",
+					"hidden": "0"
+				}
+			]
+		},	
+		{   "device_id": "startsom",	"parent_id": "som",		"create": "plugin.parameters.START",	
+			"module_id": "41",
+			"type": "http",
+			"name_fr": "plugin.name - Démarrage du Relais",
+			"icon": "SonoffMini2.png",
+			"default_image" : "SonoffMini2.png",
+			"utilisation_id": "43",
+			"parameters": {
+				"VAR1": "plugin.parameters.IP",
+				"VAR2": "plugin.parameters.DEVID",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info",
+				"RAW_XPATH": "//startup",
+				"POLLING": "plugin.parameters.FREQ",
+				"CONVERT": "0"
+			},
+			"values": [
+				{
+					"value": "off",
+					"description": "Off",
+					"icon": "SonOffMini_stoff.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/startup",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {     \"startup\": \"off\" }  }",
+					"http_type": "POST",
+					"hidden": "0"
+				},
+				{
+					"value": "on",
+					"description": "On",
+					"icon": "SonOffMini_ston.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/startup",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {     \"startup\": \"on\" }  }",
+					"http_type": "POST",
+					"hidden": "0"
+				},
+				{
+					"value": "stay",
+					"description": "Dernier état",
+					"icon": "SonOffMini_stlast.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/startup",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {     \"startup\": \"stay\" }  }",
+					"http_type": "POST",
+					"hidden": "0"
+				}
+			]
+		},	
+		{	"device_id": "wifisom",			"parent_id": "som",		"create": "plugin.parameters.WIFI",
+			"module_id": "51",
+			"type": "http",
+			"name_fr": "plugin.name - Signal Wifi",
+			"icon": "SonOffMini_signal.png",
+			"utilisation_id": "35",
+			"value_unit": "Db",
+			"parameters": {
+				"VAR1": "plugin.parameters.IP",
+				"VAR2": "plugin.parameters.DEVID",
+				"VAR3": "",
+				"value_type": "float",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=signal",
+				"RAW_XPATH": "//signalStrength",
+				"POLLING": "plugin.parameters.FREQ",
+				"CONVERT": "0"
+			}					
+		}	
+	]
+}
