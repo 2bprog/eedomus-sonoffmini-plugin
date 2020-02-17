@@ -2,9 +2,10 @@
 
 * Ajout Configuration de l'état du relai au démarrage
 * Ajout Configuration Auto-Off
-* Ajout Capteur Signal Wifi
-* Ajout script php dans le json de complet
+* Ajout Information Signal Wifi
+* Ajout script php dans le json
 * Création des icônes
+* Documentation
 * Refactoring complet
 * Ajout sur Github
 
