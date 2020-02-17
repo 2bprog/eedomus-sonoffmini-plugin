@@ -1,9 +1,11 @@
-Plugin pour utiliser SonOff Mini en mode DIY, avec retour d'etat, auto-off, 
+Plugin pour utiliser un SonOff Mini en mode DIY, avec retour d'etat, configuration auto-off et l'état du relais au démarrage, signal Wifi.
+
 Version Original de Tibalt76, Modifiée par Benjamin B.
 
 ## Prérequis
 
-* Intégrer le module sur le WIFI local voir tuto de [Planete-domotique]( https://www.planete-domotique.com/blog/2019/10/28/sonoff-mini-diy-eedomus/)
+* Un SonOff Mini en mode DIY
+* Intégrer le module sur votre réseau WIFI local, voir tuto de [Planete-domotique]( https://www.planete-domotique.com/blog/2019/10/28/sonoff-mini-diy-eedomus/)
 * Connaître l'IP et le Device ID de votre SonOff Mini
 
 ## Champs à configurer : 
