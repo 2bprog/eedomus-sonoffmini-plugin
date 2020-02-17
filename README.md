@@ -1,6 +1,5 @@
 Plugin pour utiliser SonOff Mini en mode DIY, avec retour d'etat, auto-off, 
-
-Version Original de Tibalt76, Modifiée par Benjamin B. (Benj70b)
+Version Original de Tibalt76, Modifiée par Benjamin B.
 
 ## Prérequis
 
