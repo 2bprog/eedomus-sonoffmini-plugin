@@ -80,8 +80,8 @@
 			"default_image" : "SonoffMini2.png",
 			"utilisation_id": "2",
 			"parameters": {
-				"VAR1": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
-				"VAR2": "",
+				"VAR1": "plugin.parameters.IP",
+				"VAR2": "plugin.parameters.DEVID",
 				"VAR3": "",
 				"value_type": "list",
 				"ignore_errors": 3,
@@ -101,11 +101,20 @@
 					"hidden": "0"
 				},
 				{
+					"value": "1",
+					"description": "On",
+					"icon": "SonOffMini_On.png",
+					"http_url": "http://[VAR1]:8081/zeroconf/switch",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {     \"switch\": \"on\" }  }",
+					"http_type": "POST",
+					"hidden": "1"
+				},
+				{
 					"value": "100",
 					"description": "On",
 					"icon": "SonOffMini_On.png",
 					"http_url": "http://[VAR1]:8081/zeroconf/switch",
-					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {     \"switch\": \"off\" }  }",
+					"http_params": "{\"deviceid\": \"[VAR2]\",  \"data\": {     \"switch\": \"on\" }  }",
 					"http_type": "POST",
 					"hidden": "0"
 				}
