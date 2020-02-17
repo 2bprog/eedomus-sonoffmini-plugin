@@ -1,6 +1,6 @@
 ## v3.0 (17/02/2020) - Benjamin B.
 
-* Ajout Configuration de l'état du relai au démarrage
+* Ajout Configuration de l'état du relais au démarrage
 * Ajout Configuration Auto-Off
 * Ajout Information Signal Wifi
 * Ajout script php dans le json
