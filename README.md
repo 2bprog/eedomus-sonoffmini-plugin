@@ -1,6 +1,6 @@
 Plugin pour utiliser un SonOff Mini en mode DIY, avec retour d'etat, configuration auto-off et l'état du relais au démarrage, signal Wifi.
 
-Version Original de Tibalt76, Modifiée par Benjamin B.
+Version Original de Tibalt76, Modifiée par Benj70b
 
 ## Prérequis
 

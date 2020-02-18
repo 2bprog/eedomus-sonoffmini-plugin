@@ -3,7 +3,7 @@
 // ip : ip du sonoff mini
 // deviceid : id du device
 // cmd : command => switch, pulse, startup, info, signal
-// data : si switch, pulse ou startup
+// data : si switch, pulse ou startup (non utiliser par le plugin)
 
 $ip = getarg('ip', false, '');
 $deviceid = getarg('id', false, '');

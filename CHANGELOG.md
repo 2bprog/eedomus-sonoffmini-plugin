@@ -1,4 +1,8 @@
-## v3.0 (17/02/2020) - Benjamin B.
+## v3.0a (18/02/2020)
+
+* Correction du lien du fichier php 
+
+## v3.0 (17/02/2020)
 
 * Ajout Configuration de l'état du relais au démarrage
 * Ajout Configuration Auto-Off

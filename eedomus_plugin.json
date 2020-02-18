@@ -2,10 +2,10 @@
 	"plugin_id": "sonoffmini",
 	"name_fr": "SonOff Mini",
 	"icon": "SonoffMini2.png",
-	"version": "3.0",
+	"version": "3.0a",
 	"creation_date": "2020-02-17",
 	"modification_date": "2020-01-21",
-	"author": "Tibalt76, Benj70b (contributeur)",
+	"author": "Tibalt76, Benj70b",
 	"description_fr": "<b>Intégration sur eedomus des modules Sonoff Mini en mode DIY</b><br><br>Avec retour d'état, auto-off, configuration du relais au démarrage, état du signal wifi",
 	"description_en": "",
 	"description_es": "",
@@ -85,7 +85,7 @@
 				"VAR3": "",
 				"value_type": "list",
 				"ignore_errors": 3,
-				"RAW_URL": "http://localhost/script/?exec=sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info",
+				"RAW_URL": "http://localhost/script/?exec=2B_sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info",
 				"RAW_XPATH": "floor(translate(//switch,'ofn','001')) * 100",
 				"POLLING": "plugin.parameters.FREQ",
 				"CONVERT": "0"
@@ -133,7 +133,7 @@
 				"VAR3": "",
 				"value_type": "list",
 				"ignore_errors": 3,
-				"RAW_URL": "http://localhost/script/?exec=sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info",
+				"RAW_URL": "http://localhost/script/?exec=2B_sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info",
 				"RAW_XPATH": "floor(translate(//pulse,'ofn','001')) * //pulseWidth",
 				"POLLING": "plugin.parameters.FREQ",
 				"CONVERT": "0"
@@ -217,7 +217,7 @@
 				"VAR3": "",
 				"value_type": "list",
 				"ignore_errors": 3,
-				"RAW_URL": "http://localhost/script/?exec=sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info",
+				"RAW_URL": "http://localhost/script/?exec=2B_sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info",
 				"RAW_XPATH": "//startup",
 				"POLLING": "plugin.parameters.FREQ",
 				"CONVERT": "0"
@@ -265,7 +265,7 @@
 				"VAR3": "",
 				"value_type": "float",
 				"ignore_errors": 3,
-				"RAW_URL": "http://localhost/script/?exec=sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=signal",
+				"RAW_URL": "http://localhost/script/?exec=2B_sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=signal",
 				"RAW_XPATH": "//signalStrength",
 				"POLLING": "plugin.parameters.FREQ",
 				"CONVERT": "0"
