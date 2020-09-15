@@ -2,9 +2,9 @@
 	"plugin_id": "sonoffmini",
 	"name_fr": "SonOff Mini",
 	"icon": "SonoffMini2.png",
-	"version": "3.0a",
+	"version": "3.1",
 	"creation_date": "2020-02-17",
-	"modification_date": "2020-01-21",
+	"modification_date": "2020-09-15",
 	"author": "Tibalt76, Benj70b",
 	"description_fr": "<b>Intégration sur eedomus des modules Sonoff Mini en mode DIY</b><br><br>Avec retour d'état, auto-off, configuration du relais au démarrage, état du signal wifi",
 	"description_en": "",
@@ -32,6 +32,13 @@
 			"xtype": "textfield",
 			"default_value": "",
 			"field": "style: 'padding: 3px;', width:130, allowBlank:false"
+		},
+		{
+			"parameter": "VERSION",
+			"description": "Firmware",
+			"xtype": "combo",
+			"default_value": "2",
+			"field": "style: 'padding: 3px;', width:130, allowBlank:false, store:[[1, '< à 3.5.0'] , [2,'>= à 3.5.0']], triggerAction: 'all'"
 		},
 		{		
 			"parameter": "AUTOOFF",
@@ -82,10 +89,10 @@
 			"parameters": {
 				"VAR1": "plugin.parameters.IP",
 				"VAR2": "plugin.parameters.DEVID",
-				"VAR3": "",
+				"VAR3": "plugin.parameters.VERSION",
 				"value_type": "list",
 				"ignore_errors": 3,
-				"RAW_URL": "http://localhost/script/?exec=2B_sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info",
+				"RAW_URL": "http://localhost/script/?exec=2B_sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info&ver=[VAR3]",
 				"RAW_XPATH": "floor(translate(//switch,'ofn','001')) * 100",
 				"POLLING": "plugin.parameters.FREQ",
 				"CONVERT": "0"
@@ -130,10 +137,10 @@
 			"parameters": {
 				"VAR1": "plugin.parameters.IP",
 				"VAR2": "plugin.parameters.DEVID",
-				"VAR3": "",
+				"VAR3": "plugin.parameters.VERSION",
 				"value_type": "list",
 				"ignore_errors": 3,
-				"RAW_URL": "http://localhost/script/?exec=2B_sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info",
+				"RAW_URL": "http://localhost/script/?exec=2B_sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info&ver=[VAR3]",
 				"RAW_XPATH": "floor(translate(//pulse,'ofn','001')) * //pulseWidth",
 				"POLLING": "plugin.parameters.FREQ",
 				"CONVERT": "0"
@@ -214,10 +221,10 @@
 			"parameters": {
 				"VAR1": "plugin.parameters.IP",
 				"VAR2": "plugin.parameters.DEVID",
-				"VAR3": "",
+				"VAR3": "plugin.parameters.VERSION",
 				"value_type": "list",
 				"ignore_errors": 3,
-				"RAW_URL": "http://localhost/script/?exec=2B_sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info",
+				"RAW_URL": "http://localhost/script/?exec=2B_sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=info&ver=[VAR3]",
 				"RAW_XPATH": "//startup",
 				"POLLING": "plugin.parameters.FREQ",
 				"CONVERT": "0"
@@ -262,10 +269,10 @@
 			"parameters": {
 				"VAR1": "plugin.parameters.IP",
 				"VAR2": "plugin.parameters.DEVID",
-				"VAR3": "",
+				"VAR3": "plugin.parameters.VERSION",
 				"value_type": "float",
 				"ignore_errors": 3,
-				"RAW_URL": "http://localhost/script/?exec=2B_sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=signal",
+				"RAW_URL": "http://localhost/script/?exec=2B_sonoffmini.php&ip=[VAR1]&id=[VAR2]&cmd=signal&ver=[VAR3]",
 				"RAW_XPATH": "//signalStrength",
 				"POLLING": "plugin.parameters.FREQ",
 				"CONVERT": "0"

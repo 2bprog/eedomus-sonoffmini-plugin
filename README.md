@@ -10,10 +10,11 @@ Version Original de Tibalt76, Modifiée par Benj70b
 
 ## Champs à configurer : 
 
-![Phériphériques](https://raw.githubusercontent.com/2bprog/eedomus-sonoffmini-plugin/master/doc/sonoffmini-cfg.png)
+![Phériphériques](https://raw.githubusercontent.com/2bprog/eedomus-sonoffmini-plugin/master/doc/sonoffmini-cfg-2.png)
 
 * **IP** : IP adresse du SonOff Mini
 * **Device ID** : Identifiant du SonOff Mini
+* **Version** : Version du firmware utilisé
 * **Création Auto-Off** : Configuration de l'arret automatique
 * **Création Démarrage du Relais** : Configuration de l'état au démarrage du relais
 * **Signal Wifi** : Information sur l'état du signal Wifi
