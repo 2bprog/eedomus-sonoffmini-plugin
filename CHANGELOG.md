@@ -1,4 +1,4 @@
-## v3.0a (15/09/2020)
+## v3.1 (15/09/2020)
 
 * Prise en charge du firmware >= 3.5.0 
 
