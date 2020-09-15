@@ -14,7 +14,7 @@ Version Original de Tibalt76, Modifiée par Benj70b
 
 * **IP** : IP adresse du SonOff Mini
 * **Device ID** : Identifiant du SonOff Mini
-* **Version** : Version du firmware utilisé
+* **Firmware** : Version du firmware utilisé
 * **Création Auto-Off** : Configuration de l'arret automatique
 * **Création Démarrage du Relais** : Configuration de l'état au démarrage du relais
 * **Signal Wifi** : Information sur l'état du signal Wifi
